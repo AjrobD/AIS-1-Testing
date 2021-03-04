@@ -38,9 +38,9 @@ public class BookRestController {
 		Optional<Book> op = service.findOne(id);
 		if(op.isPresent()) {
 			Book book = op.get();
-			return new ResponseEntity<Book>(book, HttpStatus.OK);
+			return new ResponseEntity<>(book, HttpStatus.OK);
 		}else {
-			return new ResponseEntity<Book>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
 	}
@@ -60,9 +60,9 @@ public class BookRestController {
 			updatedBook.setId(id);
 			service.save(updatedBook);
 
-			return new ResponseEntity<Book>(updatedBook, HttpStatus.OK);
+			return new ResponseEntity<>(updatedBook, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<Book>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -71,10 +71,10 @@ public class BookRestController {
 
 		try {
 			service.delete(id);
-			return new ResponseEntity<Book>(HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.OK);
 
 		} catch (EmptyResultDataAccessException e) {
-			return new ResponseEntity<Book>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
