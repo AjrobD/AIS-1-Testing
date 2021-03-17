@@ -6,7 +6,9 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
@@ -15,6 +17,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DisplayName("Tests E2E de la API REST")
 public class RestAPITest {
 	
 	@LocalServerPort
@@ -26,6 +29,7 @@ public class RestAPITest {
     }
 
 	@Test
+	@DisplayName("Comprobar que al introducir un libro podemos recuperarlo")
 	public void givenRestAPI_whenABookIsAdded_thenGETGivesTheBookBack() {
 		//Given
     	Response response1 =
@@ -48,5 +52,13 @@ public class RestAPITest {
     		body("id",equalTo(id),
     				"description",containsString("arquero"));	
 	}
+	
+	@Test
+	@DisplayName("Comprobar que al borrar un libro no podemos recuperarlo")
+	public void givenRestAPI_whenABookIsDeleted_thenGETDoesNotGiveTheBookBack() {
+		
+	}
+	
+	
 }
 	
