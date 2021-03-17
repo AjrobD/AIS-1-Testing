@@ -56,12 +56,12 @@ public class SeleniumTest {
 	
 	@Test
 	@DisplayName("Borrar un libro y comprobar que no existe")
-	public void whenBookIsDeleted_thenCannotBeFound() throws InterruptedException {
+	public void whenBookIsDeleted_thenCannotBeFound() {
 		
 		//Given
 		driver.get("http://localhost:"+this.port+"/");
 		String bookName= "Las mil y una noches";
-		//aqui falta la logica de añadir un lñibro, en cuanto eso este se sustituye "casi sin querer" por bookName en el resto del codigo
+		//aqui falta la logica de añadir un libro, en cuanto eso este se sustituye "casi sin querer" por bookName en el resto del codigo
 
 		//When
 		driver.findElement(By.linkText("CASI SIN QUERER")).click();
@@ -73,13 +73,10 @@ public class SeleniumTest {
 		List<String> listaStr = new ArrayList<>();
 		for (WebElement elem: webElements)
 			listaStr.add(elem.getText());
-		
-		
 		boolean bookFound = driver.findElements(By.partialLinkText("books"))
                 .stream()
                 .anyMatch(element -> element.getText().equalsIgnoreCase("Casi sin querer"));
-
-        assertTrue(!bookFound, "Page shouldn't contain the removed book");
+        assertTrue(!bookFound, "Page shouldn't contain the removed book"); //should fail if book is on repository
 	}
 
 }
