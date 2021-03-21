@@ -1,5 +1,6 @@
 package es.urjc.code.daw.library.test.selenium;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
@@ -51,7 +52,23 @@ public class SeleniumTest {
 	@Test
 	@DisplayName("Incluir un nuevo libro y comprobar que se ha creado")
 	public void whenBookIsAdded_thenBookBeFound() {
+		//Given
+		driver.get("http://localhost:"+this.port+"/");
 		
+		//When
+		driver.findElement(By.xpath("//button")).click();
+		
+		driver.findElement(By.name("title")).sendKeys("Hansel y Gretel");
+		driver.findElement(By.name("description")).sendKeys("Cuento sobre dos niños en un bosque");
+	
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		
+		List<WebElement> buttonList = driver.findElements(By.xpath("//button"));
+		buttonList.get(2).click();
+		
+		//Then
+		assertNotNull(driver.findElement(By.partialLinkText("Hansel")));
+	
 	}
 	
 	@Test
