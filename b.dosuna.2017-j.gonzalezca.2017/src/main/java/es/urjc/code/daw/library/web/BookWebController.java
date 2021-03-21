@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import es.urjc.code.daw.library.book.Book;
+import es.urjc.code.daw.library.book.BookDTO;
 import es.urjc.code.daw.library.book.BookService;
 
 @Controller
@@ -62,9 +63,11 @@ public class BookWebController {
 	}
 	
 	@PostMapping("/createbook")
-	public String newBookProcess(Book book) {
+	public String newBookProcess(BookDTO book) {
 		
-		Book newBook = service.save(book);
+		Book persistentBook = new Book(book.getTitle(),book.getDescription());
+
+		Book newBook = service.save(persistentBook);
 		
 		return "redirect:/books/" + newBook.getId();
 	}
@@ -84,10 +87,11 @@ public class BookWebController {
 	}
 	
 	@PostMapping("/editbook")
-	public String editBookProcess(Book book) {
+	public String editBookProcess(BookDTO book) {
 		
-		
-		service.save(book);
+		Book persistentBook = new Book(book.getTitle(),book.getDescription());
+
+		service.save(persistentBook);
 		
 		return "bookEdited";
 	}

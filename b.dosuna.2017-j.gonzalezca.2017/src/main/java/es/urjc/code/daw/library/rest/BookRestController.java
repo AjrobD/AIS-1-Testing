@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.urjc.code.daw.library.book.Book;
+import es.urjc.code.daw.library.book.BookDTO;
 import es.urjc.code.daw.library.book.BookService;
 
 @RestController
@@ -47,20 +48,20 @@ public class BookRestController {
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Book createBook(@RequestBody Book book) {
-
-		return service.save(book);
+	public Book createBook(@RequestBody BookDTO book) {
+		Book persistentBook = new Book(book.getTitle(),book.getDescription());
+		return service.save(persistentBook);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Book> updateBook(@PathVariable long id, @RequestBody Book updatedBook) {
+	public ResponseEntity<Book> updateBook(@PathVariable long id, @RequestBody BookDTO updatedBook) {
 
 		if (service.exist(id)) {
-			
-			updatedBook.setId(id);
-			service.save(updatedBook);
+			Book persistentBook = new Book(updatedBook.getTitle(),updatedBook.getDescription());
+			persistentBook.setId(id);
+			service.save(persistentBook);
 
-			return new ResponseEntity<>(updatedBook, HttpStatus.OK);
+			return new ResponseEntity<>(persistentBook, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
