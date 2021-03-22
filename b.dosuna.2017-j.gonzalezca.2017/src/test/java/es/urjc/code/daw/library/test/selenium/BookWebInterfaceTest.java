@@ -51,7 +51,7 @@ public class SeleniumTest {
 	
 	@Test
 	@DisplayName("Incluir un nuevo libro y comprobar que se ha creado")
-	public void whenBookIsAdded_thenBookBeFound() {
+	public void whenBookIsAdded_thenBookCanFound() {
 		//Given
 		driver.get("http://localhost:"+this.port+"/");
 		
@@ -77,11 +77,12 @@ public class SeleniumTest {
 		
 		//Given
 		driver.get("http://localhost:"+this.port+"/");
-		String bookName= "Las mil y una noches";
-		//aqui falta la logica de añadir un libro, en cuanto eso este se sustituye "casi sin querer" por bookName en el resto del codigo
-
+		driver.findElement(By.xpath("//button")).click();	
+		driver.findElement(By.name("title")).sendKeys("Las mil y una noches");
+		driver.findElement(By.name("description")).sendKeys("recopilación medieval de cuentos de Oriente Medio");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		
 		//When
-		driver.findElement(By.linkText("CASI SIN QUERER")).click();
 		List<WebElement> buttonList = driver.findElements(By.xpath("//button"));
 		buttonList.get(0).click();
 		
@@ -92,8 +93,8 @@ public class SeleniumTest {
 			listaStr.add(elem.getText());
 		boolean bookFound = driver.findElements(By.partialLinkText("books"))
                 .stream()
-                .anyMatch(element -> element.getText().equalsIgnoreCase("Casi sin querer"));
-        assertTrue(!bookFound, "Page shouldn't contain the removed book"); //should fail if book is on repository
+                .anyMatch(element -> element.getText().equalsIgnoreCase("Las mil y una noches"));
+        assertTrue(!bookFound, "Page shouldn't contain the removed book");
 	}
 
 }

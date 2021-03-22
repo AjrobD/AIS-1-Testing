@@ -31,13 +31,13 @@ public class BookServiceTest {
 	@Test
 	@DisplayName("Comprobar que cuando se guarda un libro utilizando BookService, se guarda en el repositorio y se lanza una notificacion")
 	public void givenBookService_whenABookIsAdded_thenBookIsAddedToRepository_and_thenNotificationIsSent() {
-		//given: done in set up
-		//when
+		//Given: done in set up
+		//When
 		Book book = mock(Book.class);
 		when(bookRepository.save(book)).thenReturn(book);
 		when(book.getTitle()).thenReturn("Blancanieves");
 		bookService.save(book);
-		//then
+		//Then
 		verify(bookRepository).save(book);
 		verify(notificationService).notify("Book Event: book with title="+book.getTitle()+" was created");
 	}
@@ -45,6 +45,7 @@ public class BookServiceTest {
 	@Test
 	@DisplayName("Comprobar que cuando se borra un libro utilizando BookService, se elimina del repositorio y se lanza una notificacion")
 	public void givenBookService_whenABookIsDeleted_thenIsDeletedFromBookRepository_and_thenNotificationIsSent() {
+		//Given
 		Book book = mock(Book.class);
 		when(book.getTitle()).thenReturn("Prueba");
 		while(bookRepository.existsById(book.getId())) {
@@ -52,12 +53,13 @@ public class BookServiceTest {
 		}
 		when(bookRepository.save(book)).thenReturn(book);
 		bookService.save(book);
+		
+		//When
 		bookService.delete(book.getId());
-		//delete method is called once
+		
+		//Then
 		verify(bookRepository, times(1)).deleteById(book.getId());
-		//book is really deleted
 		when(bookRepository.existsById(book.getId())).thenReturn(false);
-		//API's logger shows correct message
 		verify(notificationService).notify("Book Event: book with id="+book.getId()+" was deleted");
 	}
 }
