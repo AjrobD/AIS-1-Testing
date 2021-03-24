@@ -15,6 +15,8 @@ import es.urjc.code.daw.library.book.BookService;
 
 @Controller
 public class BookWebController {
+	
+	static final String BOOKS = "books";
 
 	@Autowired
 	private BookService service;
@@ -22,9 +24,9 @@ public class BookWebController {
 	@GetMapping("/")
 	public String showBooks(Model model) {
 
-		model.addAttribute("books", service.findAll());
+		model.addAttribute(BOOKS, service.findAll());
 		
-		return "books";
+		return BOOKS;
 	}
 	
 	@GetMapping("/books/{id}")
@@ -36,7 +38,7 @@ public class BookWebController {
 			model.addAttribute("book", book);
 			return "book";
 		}else {
-			return "books";
+			return BOOKS;
 		}
 		
 	}
@@ -81,7 +83,7 @@ public class BookWebController {
 			model.addAttribute("book", book);
 			return "editBookPage";
 		}else {
-			return "books";
+			return BOOKS;
 		}
 		
 	}
