@@ -27,7 +27,7 @@ classes = Application.class,
 webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 @DisplayName("Tests E2E de la interfaz web")
-public class SeleniumTest {
+class BookWebInterfaceTest {
 	@LocalServerPort
 	int port;
 	private WebDriver driver;
@@ -51,7 +51,7 @@ public class SeleniumTest {
 	
 	@Test
 	@DisplayName("Incluir un nuevo libro y comprobar que se ha creado")
-	public void whenBookIsAdded_thenBookCanFound() {
+	void whenBookIsAdded_thenBookCanFound() {
 		//Given
 		driver.get("http://localhost:"+this.port+"/");
 		
@@ -73,7 +73,7 @@ public class SeleniumTest {
 	
 	@Test
 	@DisplayName("Borrar un libro y comprobar que no existe")
-	public void whenBookIsDeleted_thenCannotBeFound() {
+	void whenBookIsDeleted_thenCannotBeFound() {
 		
 		//Given
 		driver.get("http://localhost:"+this.port+"/");

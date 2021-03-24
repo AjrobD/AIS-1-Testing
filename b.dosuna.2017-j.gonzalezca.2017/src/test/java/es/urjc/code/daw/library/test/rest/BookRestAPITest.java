@@ -19,7 +19,7 @@ import io.restassured.response.Response;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DisplayName("Tests E2E de la API REST")
-public class RestAPITest {
+class BookRestAPITest {
 	
 	@LocalServerPort
     int port;
@@ -31,7 +31,7 @@ public class RestAPITest {
 
 	@Test
 	@DisplayName("Comprobar que al introducir un libro podemos recuperarlo")
-	public void givenRestAPI_whenABookIsAdded_thenGETGivesTheBookBack() {
+	void givenRestAPI_whenABookIsAdded_thenGETGivesTheBookBack() {
 		//Given
     	Response response1 =
     	given().
@@ -56,7 +56,7 @@ public class RestAPITest {
 	
 	@Test
 	@DisplayName("Comprobar que al borrar un libro no podemos recuperarlo")
-	public void givenRestAPI_whenABookIsDeleted_thenGETDoesNotGiveTheBookBack() {
+	void givenRestAPI_whenABookIsDeleted_thenGETDoesNotGiveTheBookBack() {
 		//Given
     	Response response2 =
     	given().

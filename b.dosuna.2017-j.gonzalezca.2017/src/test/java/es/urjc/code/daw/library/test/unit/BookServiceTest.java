@@ -12,7 +12,7 @@ import es.urjc.code.daw.library.book.BookService;
 import es.urjc.code.daw.library.notification.NotificationService;
 
 @DisplayName("Tests unitarios de la logica de la aplicacion")
-public class BookServiceTest {
+class BookServiceTest {
 	
 	BookService bookService;
 	NotificationService notificationService;
@@ -30,7 +30,7 @@ public class BookServiceTest {
 	
 	@Test
 	@DisplayName("Comprobar que cuando se guarda un libro utilizando BookService, se guarda en el repositorio y se lanza una notificacion")
-	public void givenBookService_whenABookIsAdded_thenBookIsAddedToRepository_and_thenNotificationIsSent() {
+	void givenBookService_whenABookIsAdded_thenBookIsAddedToRepository_and_thenNotificationIsSent() {
 		//Given: done in set up
 		//When
 		Book book = mock(Book.class);
@@ -44,7 +44,7 @@ public class BookServiceTest {
 	
 	@Test
 	@DisplayName("Comprobar que cuando se borra un libro utilizando BookService, se elimina del repositorio y se lanza una notificacion")
-	public void givenBookService_whenABookIsDeleted_thenIsDeletedFromBookRepository_and_thenNotificationIsSent() {
+	void givenBookService_whenABookIsDeleted_thenIsDeletedFromBookRepository_and_thenNotificationIsSent() {
 		//Given
 		Book book = mock(Book.class);
 		when(book.getTitle()).thenReturn("Prueba");
