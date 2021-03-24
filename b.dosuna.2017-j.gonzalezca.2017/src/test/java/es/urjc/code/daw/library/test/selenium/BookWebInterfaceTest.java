@@ -51,7 +51,7 @@ class BookWebInterfaceTest {
 	
 	@Test
 	@DisplayName("Incluir un nuevo libro y comprobar que se ha creado")
-	void whenBookIsAdded_thenBookCanFound() {
+	void whenBookIsAdded_thenBookCanBeFound() {
 		//Given
 		driver.get("http://localhost:"+this.port+"/");
 		
