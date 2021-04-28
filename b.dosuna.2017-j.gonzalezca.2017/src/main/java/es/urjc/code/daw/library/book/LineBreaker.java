@@ -9,8 +9,7 @@ public class LineBreaker {
 			return text;
 		}
 		else {
-			String aux = text.trim().replaceAll(" +", " ");
-			String[] lines = aux.split(" ");
+			String[] lines = text.trim().replaceAll(" +", " ").split(" ");
 			String output = "";
 			int charCount = 0;
 			for(int i=0;i<lines.length;i++) {
@@ -30,5 +29,3 @@ public class LineBreaker {
 		}
 	}
 }
-
-

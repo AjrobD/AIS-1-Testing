@@ -97,7 +97,7 @@ public class LineBreakerTest {
 	}
 	
 	@Test
-	@DisplayName("Comprobar que cuando entra un string con 2  espacios sale cortado en dos con espacios unicos")
+	@DisplayName("Comprobar que cuando entra un string con 2 espacios sale cortado en dos con espacios unicos")
 	void givenTestStringWithTwoConsecutiveSpacesBetweenWordsAnd4Chars_whenLineBreaker_thenReturnBrokenString() {
 		//Given
 		String input = "test  test";
