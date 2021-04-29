@@ -10,7 +10,7 @@ public class LineBreaker {
 			return text;
 		}
 		else {
-			final String[] lines = eraseIrregularWhitespaces(text);
+			final String[] lines = removeIrregularWhitespaces(text).split(" ");
 			StringBuilder output = new StringBuilder();
 			int charCount = 0;
 			for(int i=0;i<lines.length;i++) {
@@ -18,15 +18,15 @@ public class LineBreaker {
 				if(charCount>lineLength) {
 					if (!output.toString().equals("")) 
 						output = whiteSpaceOnCharAtLineLength(output);
-					lines[i] = breakWordsBiggerThanLineLength(lines[i], lineLength);
+					lines[i] = breakWordsBiggerThanLineLength(lines[i], lineLength, false);
 					output.append("\n");
 					charCount=0;
 				}
 				output.append(lines[i]);
-				if(i <lines.length-1)
-					output.append(" ");
+				output.append(" ");
+
 			}
-			return output.toString().trim();
+			return removeIrregularWhitespaces(output.toString().trim());
 		}
 	}
 
@@ -37,19 +37,22 @@ public class LineBreaker {
 			return output;
 	}
 	
-	private static String breakWordsBiggerThanLineLength(String word, int givenLength) {
-		if (word.length()<= givenLength) {
+	private static String breakWordsBiggerThanLineLength(String word, int givenLength, boolean checker) {
+		if ( (word.length()<= givenLength) && (!checker) )
 			return word;
-		}
+		else if (word.length()<= givenLength)
+			return word + "\n";
 		else {
 			String aux = word.substring(0, givenLength-1);
 			aux += "-\n";
-			return aux + breakWordsBiggerThanLineLength(word.substring(givenLength-1), givenLength);
+			return aux + breakWordsBiggerThanLineLength(word.substring(givenLength-1), givenLength, true) ;
 		}
 	}
 	
-	private static String[] eraseIrregularWhitespaces(String text) {
-		return text.trim().replaceAll(" +", " ").split(" ");
+	private static String removeIrregularWhitespaces(String text) {
+		return text.trim().replaceAll(" +", " ").replaceAll("\n\n+", "\n").replaceAll("\n ", "\n");
 	}
+	
+
 }
 
