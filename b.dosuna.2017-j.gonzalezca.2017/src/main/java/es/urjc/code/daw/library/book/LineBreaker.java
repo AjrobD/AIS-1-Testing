@@ -16,10 +16,9 @@ public class LineBreaker {
 			for(int i=0;i<lines.length;i++) {
 				charCount += lines[i].length();
 				if(charCount>lineLength) {
-					if (!output.toString().equals("")) {
+					if (!output.toString().equals("")) 
 						output = whiteSpaceOnCharAtLineLength(output);
-					} else
-						lines[i] = breakWordsBiggerThanLineLength(lines[i], lineLength);
+					lines[i] = breakWordsBiggerThanLineLength(lines[i], lineLength);
 					output.append("\n");
 					charCount=0;
 				}

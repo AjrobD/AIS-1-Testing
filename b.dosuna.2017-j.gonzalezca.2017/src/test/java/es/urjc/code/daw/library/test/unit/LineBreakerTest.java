@@ -157,7 +157,7 @@ public class LineBreakerTest {
 	}
 	
 	@Test
-	@DisplayName("Comprobar que cuando entra un string con palabras unas palabras pequeñas y otras grandes el corte funciona")
+	@DisplayName("Comprobar que cuando entra un string con unas palabras pequeñas y otras grandes el corte funciona")
 	void givenTestStringWithSomeWordsLongerTAndOthersShorterThanGivenLength_whenLineBreaker_thenReturnBrokenString() {
 		//Given
 		String input = "test 1234567 test";
