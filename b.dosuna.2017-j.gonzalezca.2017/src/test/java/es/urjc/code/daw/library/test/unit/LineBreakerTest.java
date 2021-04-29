@@ -156,6 +156,30 @@ public class LineBreakerTest {
 		assertEquals(expected,output);
 	}
 	
+	@Test
+	@DisplayName("Comprobar que cuando entra un string con palabras unas palabras pequeñas y otras grandes el corte funciona")
+	void givenTestStringWithSomeWordsLongerTAndOthersShorterThanGivenLength_whenLineBreaker_thenReturnBrokenString() {
+		//Given
+		String input = "test 1234567 test";
+		//When
+		String output = LineBreaker.breakText(input, 6);
+		//Then
+		String expected = "test\n12345-\n67\ntest";
+		assertEquals(expected,output);
+	}
+	
+	@Test
+	@DisplayName("Comprobar que cuando entra un string con una palabra mas larga que la longitud el corte funciona")
+	void givenTestStringWithOnlyOneWordLongerThanGivenLength_whenLineBreaker_thenReturnBrokenString() {
+		//Given
+		String input = "123456789";
+		//When
+		String output = LineBreaker.breakText(input, 3);
+		//Then
+		String expected = "12-\n34-\n56-\n789";
+		assertEquals(expected,output);
+	}
+	
 	
 	
 	
