@@ -50,9 +50,8 @@ public class LineBreaker {
 	}
 	
 	private static String removeIrregularWhitespaces(String text) {
-		return text.trim().replaceAll(" +", " ").replaceAll("\n\n+", "\n").replaceAll("\n ", "\n");
+		return text.trim().replaceAll(" +", " ").replaceAll("\n\n+", "\n").replace("\n ", "\n");
 	}
 	
-
 }
 
