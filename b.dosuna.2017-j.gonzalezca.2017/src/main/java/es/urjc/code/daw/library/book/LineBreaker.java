@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class LineBreaker {
 	
+	private LineBreaker() {
+		//not called
+	}
 	public static String breakLine(String text, int lineLength) {
 		if(text.length()<= lineLength) {
 			return text;
