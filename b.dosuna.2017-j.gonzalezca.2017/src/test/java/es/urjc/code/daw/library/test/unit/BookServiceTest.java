@@ -36,6 +36,7 @@ class BookServiceTest {
 		Book book = mock(Book.class);
 		when(bookRepository.save(book)).thenReturn(book);
 		when(book.getTitle()).thenReturn("Blancanieves");
+		when(book.getDescription()).thenReturn("Cuento infantil mundialmente conocido");
 		bookService.save(book);
 		//Then
 		verify(bookRepository).save(book);
@@ -48,6 +49,7 @@ class BookServiceTest {
 		//Given
 		Book book = mock(Book.class);
 		when(book.getTitle()).thenReturn("Prueba");
+		when(book.getDescription()).thenReturn("Esta es la descripción de la prueba");
 		while(bookRepository.existsById(book.getId())) {
 			book.setId(book.getId()+1);
 		}

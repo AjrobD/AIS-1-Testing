@@ -17,7 +17,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "";
 		//When
-		String output = LineBreaker.breakText(input, 2);
+		String output = LineBreaker.breakLine(input, 2);
 		//Then
 		String expected = "";
 		assertEquals(expected,output);
@@ -29,7 +29,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test";
 		//When
-		String output = LineBreaker.breakText(input, 4);
+		String output = LineBreaker.breakLine(input, 4);
 		//Then
 		String expected = "test";
 		assertEquals(expected,output);
@@ -41,7 +41,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test";
 		//When
-		String output = LineBreaker.breakText(input, 5);
+		String output = LineBreaker.breakLine(input, 5);
 		//Then
 		String expected = "test";
 		assertEquals(expected,output);
@@ -53,7 +53,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test test";
 		//When
-		String output = LineBreaker.breakText(input, 4);
+		String output = LineBreaker.breakLine(input, 4);
 		//Then
 		String expected = "test\ntest";
 		assertEquals(expected,output);
@@ -65,7 +65,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test test";
 		//When
-		String output = LineBreaker.breakText(input, 5);
+		String output = LineBreaker.breakLine(input, 5);
 		//Then
 		String expected = "test\ntest";
 		assertEquals(expected,output);
@@ -77,7 +77,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test test";
 		//When
-		String output = LineBreaker.breakText(input, 6);
+		String output = LineBreaker.breakLine(input, 6);
 		//Then
 		String expected = "test\ntest";
 		assertEquals(expected,output);
@@ -90,7 +90,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test test test test";
 		//When
-		String output = LineBreaker.breakText(input, 9);
+		String output = LineBreaker.breakLine(input, 9);
 		//Then
 		String expected = "test test\ntest test";
 		assertEquals(expected,output);
@@ -102,7 +102,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test  test";
 		//When
-		String output = LineBreaker.breakText(input, 4);
+		String output = LineBreaker.breakLine(input, 4);
 		//Then
 		String expected = "test\ntest";
 		assertEquals(expected,output);
@@ -114,7 +114,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test   test";
 		//When
-		String output = LineBreaker.breakText(input, 6);
+		String output = LineBreaker.breakLine(input, 6);
 		//Then
 		String expected = "test\ntest";
 		assertEquals(expected,output);
@@ -126,7 +126,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "testtest";
 		//When
-		String output = LineBreaker.breakText(input, 5);
+		String output = LineBreaker.breakLine(input, 5);
 		//Then
 		String expected = "test-\ntest";
 		assertEquals(expected,output);
@@ -138,7 +138,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "testtesttest";
 		//When
-		String output = LineBreaker.breakText(input, 5);
+		String output = LineBreaker.breakLine(input, 5);
 		//Then
 		String expected = "test-\ntest-\ntest";
 		assertEquals(expected,output);
@@ -150,7 +150,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test test";
 		//When
-		String output = LineBreaker.breakText(input, 3);
+		String output = LineBreaker.breakLine(input, 3);
 		//Then
 		String expected = "te-\nst\nte-\nst";
 		assertEquals(expected,output);
@@ -162,7 +162,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "test 1234567 test";
 		//When
-		String output = LineBreaker.breakText(input, 6);
+		String output = LineBreaker.breakLine(input, 6);
 		//Then
 		String expected = "test\n12345-\n67\ntest";
 		assertEquals(expected,output);
@@ -174,7 +174,7 @@ public class LineBreakerTest {
 		//Given
 		String input = "123456789";
 		//When
-		String output = LineBreaker.breakText(input, 3);
+		String output = LineBreaker.breakLine(input, 3);
 		//Then
 		String expected = "12-\n34-\n56-\n789";
 		assertEquals(expected,output);
