@@ -14,7 +14,7 @@ public class LineBreaker {
 		}
 		else {
 			final String[] lines = removeIrregularWhitespaces(text).split(" ");
-			StringBuilder output = new StringBuilder();
+			StringBuilder output = new StringBuilder("");
 			int charCount = 0;
 			for(int i=0;i<lines.length;i++) {
 				charCount += lines[i].length();
@@ -41,9 +41,9 @@ public class LineBreaker {
 	}
 	
 	private static String breakWordsBiggerThanLineLength(String word, int givenLength, boolean checker) {
-		if ( (word.length()<= givenLength) && (!checker) )
+		if ( (word.length() < givenLength) && (!checker) )
 			return word;
-		else if (word.length()<= givenLength)
+		else if (word.length() <= givenLength)
 			return word + "\n";
 		else {
 			String aux = word.substring(0, givenLength-1);
@@ -53,7 +53,7 @@ public class LineBreaker {
 	}
 	
 	private static String removeIrregularWhitespaces(String text) {
-		return text.trim().replaceAll(" +", " ").replaceAll("\n\n+", "\n").replace("\n ", "\n");
+		return text.trim().replaceAll(" +", " ").replaceAll("\n+", "\n").replace("\n ", "\n");
 	}
 	
 }
